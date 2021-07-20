@@ -14,9 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @PropertySource("classpath:db.properties")
-@ComponentScan(basePackages = {
-        "football"
-})
+@ComponentScan(basePackages = {"football"})
 public class AppConfig {
     private final Environment env;
 
