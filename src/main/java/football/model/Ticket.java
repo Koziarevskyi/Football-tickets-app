@@ -15,7 +15,7 @@ public class Ticket {
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     private GameSession gameSession;
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     public Long getId() {
