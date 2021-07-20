@@ -4,6 +4,8 @@ import football.dto.response.UserResponseDto;
 import football.model.User;
 import football.service.UserService;
 import football.service.mapper.UserMapper;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,5 +26,13 @@ public class UserController {
     public UserResponseDto getByEmail(@RequestParam String email) {
         User user = userService.findByEmail(email);
         return userMapper.mapToDto(user);
+    }
+
+    @GetMapping
+    public List<UserResponseDto> getAll() {
+        return userService.getAll()
+                             .stream()
+                             .map(userMapper::mapToDto)
+                             .collect(Collectors.toList());
     }
 }

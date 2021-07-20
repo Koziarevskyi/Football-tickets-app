@@ -4,6 +4,7 @@ import football.dao.UserDao;
 import football.exception.DataProcessingException;
 import football.model.User;
 import football.service.UserService;
+import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,10 @@ public class UserServiceImpl implements UserService {
     public User findByEmail(String email) {
         return userDao.findByEmail(email).orElseThrow(
                 () -> new DataProcessingException("User with email " + email + " not found"));
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userDao.getAll();
     }
 }
